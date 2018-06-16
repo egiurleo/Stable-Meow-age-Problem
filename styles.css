@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
+
+html, body {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 1.1rem;
+}
+
+.titleContainer {
+  color: #a869a8ff;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+}
+
+.bodyContainer {
+  display: flex;
+  justify-content: space-around;
+  margin: 5rem;
+}
+
+.blurb {
+  align-items: center;
+  border: 3px solid #a869a8;
+  border-radius: 3px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.blurb .day {
+  color: #a869a8;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+}
+
+.blurb .text {
+  text-align: center;
+}
+
+.demo {
+  align-items: center;
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+}
+
+.catContainer, .humanContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.participantContainer {
+  display: flex;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.participantContainer.human .human {
+  z-index: 1;
+}
+
+.participantContainer.human .cat {
+  margin-top: 2rem;
+  margin-left: -2rem;
+  z-index: 0;
+}
+
+.participant {
+  border-radius: 3px;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 0 0 10px #a869a8;
+  }
+  100% {
+    box-shadow: none;
+  }
+}
+
+.active {
+  animation: pulse 3s infinite;
+  /* transition: .2s; */
+}
+
+.participant .name {
+  display: flex;
+  justify-content: center;
+}
+
+.participant .body {
+  display: flex;
+}
+
+.participant .preferences {
+  font-size: .9rem;
+}
+
+.cat .image {
+  background-color: blue;
+}
+
+.human .image {
+  background-color: orange;
+}
+
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  background-color: transparent;
+  border: 3px solid #a869a8;
+  border-radius: 3px;
+  color: #a869a8;
+  font-family: 'Oxygen';
+  font-size: 1.5rem;
+  padding: .5rem;
+}
+
+.button:hover {
+  box-shadow: 2px 2px 4px rgba(130, 130, 130, 0.5);
+  cursor: pointer;
+  transition: .2s;
+}
+
+.button:active {
+  background-color: #f4ecf4;
+}
+
+.button:focus {
+  outline-color: #a869a8;
+  transition: .2s;
+}
