@@ -36,7 +36,9 @@ class Participant {
 
   prefersToCurrentPartner(newPartner) {
     if(!this.paired()) { return true; }
-    return this.preferences.indexOf(newPartner) < this.preferences.indexOf(this.partner);
+    const newPartnerIdx = Object.keys(this.preferences).filter(idx => this.preferences[idx].obj === newPartner)[0];
+    const thisPartnerIdx = Object.keys(this.preferences).filter(idx => this.preferences[idx].obj === this.Partner)[0];
+    return newPartnerIdx < thisPartnerIdx;
   }
 }
 
