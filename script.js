@@ -1,7 +1,7 @@
 var cats = [];
 var humans = []
 var unpairedHumans = [];
-var day = -1;
+let day;
 
 $(document).ready(() => {
   const { cats: cats2, humans: humans2 } = setUp();
@@ -10,10 +10,20 @@ $(document).ready(() => {
 
   setUpDom(cats, humans);
 
+  initialSetup();
+});
+
+function initialSetup() {
+  cats.forEach(cat => unpair(cat));
+
+  day = -1;
+
+  $('.next').html('Next');
+  $('.next').off('click');
   $('.next').click(e => {
     setUpDay();
   });
-});
+}
 
 function setUpDay() {
   day++;
@@ -70,21 +80,37 @@ function attemptAdoption(unpairedHumans, humanIdx, catIdx) {
   } else {
     if (cat.prefersToCurrentPartner(human)) {
       $('.blurb .text').html(`${cat.name} was already adopted by ${cat.partner.name}, but they liked ${human.name} better, so they decide to run away!`);
-      cat.unpair();
+      unpair(cat);
       pair(human, cat);
     } else {
       $('.blurb .text').html(`${cat.name} was already adopted by ${cat.partner.name}. They're happy together!`);
     }
   }
 
+  $('.next').off('click');
   $('.next').click(e => {
     setUpAdoption(unpairedHumans, humanIdx + 1);
+  });
+}
+
+function finish() {
+  $('.blurb .text').html('All the cats have been adopted!');
+
+  $('.next').html('Reset');
+  $('.next').off('click');
+  $('.next').click(e => {
+    initialSetup();
   });
 }
 
 function pair(human, cat) {
   human.pair(cat);
   moveAnimate(`.participant.${cat.name}`, `.participantContainer.${human.name}`);
+}
+
+function unpair(cat) {
+  cat.unpair();
+  moveAnimate(`.participant.${cat.name}`, `.participantContainer.${cat.name}`);
 }
 
 function moveAnimate(element, newParent){
@@ -94,6 +120,9 @@ function moveAnimate(element, newParent){
   newParent= $(newParent);
 
   var oldOffset = element.offset();
+
+  if(!oldOffset) { return; }
+
   element.appendTo(newParent);
   var newOffset = element.offset();
 
