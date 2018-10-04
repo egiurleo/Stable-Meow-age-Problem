@@ -37,7 +37,8 @@ class Participant {
   prefersToCurrentPartner(newPartner) {
     if(!this.paired()) { return true; }
     const newPartnerIdx = Object.keys(this.preferences).filter(idx => this.preferences[idx].obj === newPartner)[0];
-    const thisPartnerIdx = Object.keys(this.preferences).filter(idx => this.preferences[idx].obj === this.Partner)[0];
+    const thisPartnerIdx = Object.keys(this.preferences).filter(idx => this.preferences[idx].obj === this.partner)[0];
+    debugger;
     return newPartnerIdx < thisPartnerIdx;
   }
 }
@@ -62,7 +63,7 @@ function setUp() {
   var andrew = new Human('Andrew');
 
   poly.setPreferences([emily, andrew]);
-  sawyer.setPreferences([andrew, emily]);
+  sawyer.setPreferences([emily, andrew]);
   emily.setPreferences([sawyer, poly]);
   andrew.setPreferences([sawyer, poly]);
 
