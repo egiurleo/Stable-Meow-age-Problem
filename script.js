@@ -27,6 +27,7 @@ function initialSetup() {
 
 function setUpDay() {
   day++;
+  clearActive();
 
   $('.blurb .day').html(`Day ${day}`);
   $('.blurb .text').html(`It's day ${day} and all humans without cats are going to the animal shelter!`);
@@ -50,6 +51,8 @@ function setUpAdoption(unpairedHumans, humanIdx) {
     setUpDay();
     return;
   }
+  
+  clearActive();
 
   const human = unpairedHumans[humanIdx];
 
@@ -73,6 +76,8 @@ function attemptAdoption(unpairedHumans, humanIdx, catIdx) {
   const human = unpairedHumans[humanIdx];
   const cat = human.preferences[catIdx].obj;
   human.tryPreference(catIdx);
+  
+  $($(`.participant.${human.name}`).find('.preference')[catIdx]).addClass('tried');
 
   if(!cat.paired()) {
     $('.blurb .text').html(`${cat.name} does not currently have a human, so they're happy to be adopted by ${human.name}.`);
@@ -94,6 +99,7 @@ function attemptAdoption(unpairedHumans, humanIdx, catIdx) {
 }
 
 function finish() {
+  clearActive()
   $('.blurb .text').html('All the cats have been adopted!');
 
   $('.next').html('Reset');
@@ -111,6 +117,13 @@ function pair(human, cat) {
 function unpair(cat) {
   cat.unpair();
   moveAnimate(`.participant.${cat.name}`, `.participantContainer.${cat.name}`);
+}
+
+function clearActive() {
+  $('.participant').each((idx, participant) => {
+    participant = $(participant);
+    participant.removeClass('active');
+  });
 }
 
 function moveAnimate(element, newParent){

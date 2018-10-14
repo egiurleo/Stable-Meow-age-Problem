@@ -38,7 +38,6 @@ class Participant {
     if(!this.paired()) { return true; }
     const newPartnerIdx = Object.keys(this.preferences).filter(idx => this.preferences[idx].obj === newPartner)[0];
     const thisPartnerIdx = Object.keys(this.preferences).filter(idx => this.preferences[idx].obj === this.partner)[0];
-    debugger;
     return newPartnerIdx < thisPartnerIdx;
   }
 }

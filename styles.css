@@ -59,17 +59,18 @@ html, body {
 }
 
 .participantContainer.human .human {
-  z-index: 1;
+  z-index: 0;
 }
 
 .participantContainer.human .cat {
   margin-top: 2rem;
   margin-left: -2rem;
-  z-index: 0;
+  z-index: 1;
 }
 
 .participant {
   border-radius: 3px;
+  background-color: white;
 }
 
 @keyframes pulse {
@@ -100,6 +101,10 @@ html, body {
 
 .participant .preferences {
   font-size: .9rem;
+}
+
+.preference.tried {
+  text-decoration: line-through;
 }
 
 .cat .image {
