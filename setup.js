@@ -1,13 +1,13 @@
 class Participant {
   constructor(name) {
     this.name = name;
-    this.preferences = {};
+    this.preferences = [];
     this.partner = null;
   }
 
   setPreferences(preferences) {
     preferences.forEach((preference, index) => {
-      this.preferences[index] = { obj: preference, tried: false };
+      this.preferences.push({ obj: preference, tried: false });
     });
   }
 

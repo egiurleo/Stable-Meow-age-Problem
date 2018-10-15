@@ -15,10 +15,17 @@ $(document).ready(() => {
 
 function initialSetup() {
   cats.forEach(cat => unpair(cat));
+  humans.forEach(human => {
+    human.preferences.forEach(cat => {
+      cat.tried = false;
+    });
+  });
 
   day = -1;
 
-  $('.next').html('Next');
+  $('.blurb .day').html('');
+  $('.blurb .text').html('Click to start!');
+  $('.next').html('Start');
   $('.next').off('click');
   $('.next').click(e => {
     setUpDay();
@@ -30,15 +37,13 @@ function setUpDay() {
   clearActive();
 
   $('.blurb .day').html(`Day ${day}`);
-  $('.blurb .text').html(`It's day ${day} and all humans without cats are going to the animal shelter!`);
 
   unpairedHumans = unpaired(humans);
   if(!unpairedHumans.length) {
-    $('.next').off('click');
-    $('.next').click(e => {
-      finish();
-    })
+    $('.blurb .text').html('All cats have been adopted!');
+    finish();
   } else {
+    $('.blurb .text').html(`It's day ${day} and all humans without cats are going to the animal shelter!`);
     $('.next').off('click');
     $('.next').click(e => {
       setUpAdoption(unpairedHumans, 0);
@@ -100,7 +105,6 @@ function attemptAdoption(unpairedHumans, humanIdx, catIdx) {
 
 function finish() {
   clearActive()
-  $('.blurb .text').html('All the cats have been adopted!');
 
   $('.next').html('Reset');
   $('.next').off('click');
@@ -163,8 +167,6 @@ function setUpDom(cats, humans) {
     var humanDiv = setUpDiv(human, 'human');
     $('.humanContainer').append(humanDiv);
   })
-
-  $('.blurb .text').html('Press next to start the demo!');
 }
 
 function setUpDiv(participant, className) {
