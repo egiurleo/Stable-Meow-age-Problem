@@ -55,18 +55,18 @@ class Human extends Participant {
 }
 
 function setUp() {
-  var poly = new Cat('Poly');
-  var sawyer = new Cat('Sawyer');
+  var garfield = new Cat('Garfield');
+  var sylvester = new Cat('Sylvester');
 
-  var emily = new Human('Emily');
-  var andrew = new Human('Andrew');
+  var jon = new Human('Jon');
+  var granny = new Human('Granny');
 
-  poly.setPreferences([emily, andrew]);
-  sawyer.setPreferences([emily, andrew]);
-  emily.setPreferences([sawyer, poly]);
-  andrew.setPreferences([sawyer, poly]);
+  garfield.setPreferences([jon, granny]);
+  sylvester.setPreferences([jon, granny]);
+  jon.setPreferences([sylvester, garfield]);
+  granny.setPreferences([sylvester, garfield]);
 
-  return { cats: [poly, sawyer], humans: [andrew, emily] };
+  return { cats: [garfield, sylvester], humans: [granny, jon] };
 }
 
 const unpaired = function(participants) {

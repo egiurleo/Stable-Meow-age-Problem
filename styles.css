@@ -14,8 +14,10 @@ html, body {
 
 .bodyContainer {
   display: flex;
-  justify-content: space-around;
-  margin: 5rem;
+  flex-direction: column;
+  /* justify-content: space-around;
+  align-items: center; */
+  margin: 1rem;
 }
 
 .blurb {
@@ -27,6 +29,7 @@ html, body {
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
+  height: 200px;
 }
 
 .blurb .day {
@@ -107,13 +110,13 @@ html, body {
   text-decoration: line-through;
 }
 
-.cat .image {
+/* .cat .image {
   background-color: blue;
 }
 
 .human .image {
   background-color: orange;
-}
+} */
 
 
 .buttonContainer {

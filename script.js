@@ -14,6 +14,7 @@ $(document).ready(() => {
 });
 
 function initialSetup() {
+  $('.preference').removeClass('tried');
   cats.forEach(cat => unpair(cat));
   humans.forEach(human => {
     human.preferences.forEach(cat => {
@@ -188,7 +189,9 @@ function setUpDiv(participant, className) {
         <div class='body'>
           <div class='info'>
             <div class='name'>${participant.name}</div>
-            <div class='image'></div>
+            <div class='image'>
+              <img src='images/${participant.name}.png' width=200/> 
+            </div>
           </div>
           <div class='preferences'>
             <ol>
