@@ -1,3 +1,16 @@
+function clearActive() {
+  $(`.${PARTICIPANT}`).each((_, participant) => {
+    participant = $(participant);
+    participant.removeClass(ACTIVE);
+  });
+}
+
+function incrementDay() {
+  day++;
+  humanIdx = 0;
+  catIdx = 0;
+}
+
 function resetTried() {
   $(`.${PREFERENCE}`).removeClass(TRIED);
 
@@ -34,8 +47,12 @@ function setupBlurbText(text) {
 }
 
 function setupNextButton(func, text) {
-  debugger;
   $(`.${NEXT}`).html(text);
   $(`.${NEXT}`).off('click');
   $(`.${NEXT}`).click(e => func());
+}
+
+function pair(human, cat) {
+  human.pair(cat);
+  moveAnimate(`.${PARTICIPANT}.${cat.name}`, `.${PARTICIPANT_CONTAINER}.${human.name}`);
 }

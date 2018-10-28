@@ -1,32 +1,31 @@
 var cats = [];
+var catIdx = 0;
 var humans = []
-var unpairedHumans = [];
+var humanIdx = 0;
 let day;
+let unpairedHumans = [];
 
 $(document).ready(() => {
   setUpFirstday();
 });
 
 function setUpDay() {
-  day++;
+  incrementDay();
   clearActive();
-
-  $('.blurb .day').html(`Day ${day}`);
+  setupBlurbDay(`Day ${day}`);
 
   unpairedHumans = unpaired(humans);
+
   if(!unpairedHumans.length) {
-    $('.blurb .text').html('All cats have been adopted!');
+    setupBlurbText('All cats have been adopted!');
     finish();
   } else {
-    $('.blurb .text').html(`It's day ${day} and all humans without cats are going to the animal shelter!`);
-    $('.next').off('click');
-    $('.next').click(e => {
-      setUpAdoption(unpairedHumans, 0);
-    });
+    setupBlurbText(`It's day ${day} and all humans without cats are going to the animal shelter!`);
+    setupNextButton(setUpAdoption, 'Next');
   }
 }
 
-function setUpAdoption(unpairedHumans, humanIdx) {
+function setUpAdoption() {
   if(humanIdx === unpairedHumans.length) {
     setUpDay();
     return;
@@ -37,7 +36,8 @@ function setUpAdoption(unpairedHumans, humanIdx) {
   const human = unpairedHumans[humanIdx];
 
   for(var idx=0; idx<Object.keys(human.preferences).length; idx++) {
-    const cat = human.preferences[idx];
+    catIdx = idx;
+    const cat = human.preferences[catIdx];
 
     if(!cat.tried) {
       $('.blurb .text').html(`${human.name} goes to the shelter and tries to adopt ${cat.obj.name}.`);
@@ -45,14 +45,14 @@ function setUpAdoption(unpairedHumans, humanIdx) {
 
       $('.next').off('click');
       $('.next').click(e => {
-        attemptAdoption(unpairedHumans, humanIdx, idx);
+        attemptAdoption();
       });
       break;
     }
   }
 }
 
-function attemptAdoption(unpairedHumans, humanIdx, catIdx) {
+function attemptAdoption() {
   const human = unpairedHumans[humanIdx];
   const cat = human.preferences[catIdx].obj;
   human.tryPreference(catIdx);
@@ -72,9 +72,11 @@ function attemptAdoption(unpairedHumans, humanIdx, catIdx) {
     }
   }
 
+  humanIdx++;
+
   $('.next').off('click');
   $('.next').click(e => {
-    setUpAdoption(unpairedHumans, humanIdx + 1);
+    setUpAdoption();
   });
 }
 
@@ -88,21 +90,7 @@ function finish() {
   });
 }
 
-function pair(human, cat) {
-  human.pair(cat);
-  moveAnimate(`.participant.${cat.name}`, `.participantContainer.${human.name}`);
-}
-
-
-function clearActive() {
-  $('.participant').each((idx, participant) => {
-    participant = $(participant);
-    participant.removeClass('active');
-  });
-}
-
 function moveAnimate(element, newParent){
-  debugger;
   // method found here: https://stackoverflow.com/questions/907279/jquery-animate-moving-dom-element-to-new-parent
   //Allow passing in either a jQuery object or selector
   element = $(element);

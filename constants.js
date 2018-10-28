@@ -1,3 +1,4 @@
+const ACTIVE = 'active';
 const CAT = 'cat';
 const CAT_CONTAINER = 'catContainer';
 const DAY = 'day';
