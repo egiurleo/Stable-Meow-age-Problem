@@ -4,34 +4,8 @@ var unpairedHumans = [];
 let day;
 
 $(document).ready(() => {
-  const { cats: cats2, humans: humans2 } = setUp();
-  cats = cats2;
-  humans = humans2;
-
-  setUpDom(cats, humans);
-
-  initialSetup();
+  setUpFirstday();
 });
-
-function initialSetup() {
-  $('.preference').removeClass('tried');
-  cats.forEach(cat => unpair(cat));
-  humans.forEach(human => {
-    human.preferences.forEach(cat => {
-      cat.tried = false;
-    });
-  });
-
-  day = -1;
-
-  $('.blurb .day').html('');
-  $('.blurb .text').html('Click to start!');
-  $('.next').html('Start');
-  $('.next').off('click');
-  $('.next').click(e => {
-    setUpDay();
-  });
-}
 
 function setUpDay() {
   day++;
@@ -119,10 +93,6 @@ function pair(human, cat) {
   moveAnimate(`.participant.${cat.name}`, `.participantContainer.${human.name}`);
 }
 
-function unpair(cat) {
-  cat.unpair();
-  moveAnimate(`.participant.${cat.name}`, `.participantContainer.${cat.name}`);
-}
 
 function clearActive() {
   $('.participant').each((idx, participant) => {
@@ -159,48 +129,3 @@ function moveAnimate(element, newParent){
   });
 }
 
-function setUpDom(cats, humans) {
-  cats.forEach(cat => {
-    var catDiv = setUpDiv(cat, 'cat');
-    $('.catContainer').append(catDiv);
-  });
-
-  humans.forEach(human => {
-    var humanDiv = setUpDiv(human, 'human');
-    $('.humanContainer').append(humanDiv);
-  })
-}
-
-function setUpDiv(participant, className) {
-  var preferenceList = '';
-
-  Object.keys(participant.preferences).forEach(index => {
-    preferenceList += `
-      <li>
-        <div class='preference'>
-          ${participant.preferences[index].obj.name}
-        </div>
-      </li>
-    `;
-  });
-
-  return `
-    <div class='participantContainer ${className} ${participant.name}'>
-      <div class='${className} participant ${participant.name}'>
-        <div class='body'>
-          <div class='info'>
-            <div class='name'>${participant.name}</div>
-            <div class='image'>
-              <img src='images/${participant.name}.png' width=200/> 
-            </div>
-          </div>
-          <div class='preferences'>
-            <ol>
-              ${preferenceList}
-            </ol>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-}

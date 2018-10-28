@@ -53,34 +53,3 @@ class Human extends Participant {
     super(name);
   }
 }
-
-function setUp() {
-  var garfield = new Cat('Garfield');
-  var sylvester = new Cat('Sylvester');
-
-  var jon = new Human('Jon');
-  var granny = new Human('Granny');
-
-  garfield.setPreferences([jon, granny]);
-  sylvester.setPreferences([jon, granny]);
-  jon.setPreferences([sylvester, garfield]);
-  granny.setPreferences([sylvester, garfield]);
-
-  return { cats: [garfield, sylvester], humans: [granny, jon] };
-}
-
-const unpaired = function(participants) {
-  return participants.filter(participant => {
-    return !participant.paired();
-  });
-}
-
-const printPairs = function(participants) {
-  participants.forEach(participant => {
-    if(participant.partner) {
-      console.log(`${participant.name} + ${participant.partner.name}`);
-    } else {
-      console.log(`${participant.name} is alone :(`);
-    }
-  });
-}
