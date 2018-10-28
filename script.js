@@ -91,7 +91,7 @@ function attemptAdoption(unpairedHumans, humanIdx, catIdx) {
   } else {
     if (cat.prefersToCurrentPartner(human)) {
       $('.blurb .text').html(`${cat.name} was already adopted by ${cat.partner.name}, but they liked ${human.name} better, so they decide to run away!`);
-      unpair(cat);
+      cat.unpair();
       pair(human, cat);
     } else {
       $('.blurb .text').html(`${cat.name} was already adopted by ${cat.partner.name}. They're happy together!`);
@@ -132,6 +132,7 @@ function clearActive() {
 }
 
 function moveAnimate(element, newParent){
+  debugger;
   // method found here: https://stackoverflow.com/questions/907279/jquery-animate-moving-dom-element-to-new-parent
   //Allow passing in either a jQuery object or selector
   element = $(element);
