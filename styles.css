@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Oxygen');
+@import url("https://fonts.googleapis.com/css?family=Oxygen");
 
-html, body {
-  font-family: 'Oxygen', sans-serif;
+html,
+body {
+  font-family: "Oxygen", sans-serif;
   font-size: 1.1rem;
 }
 
@@ -25,7 +26,7 @@ html, body {
   border: 3px solid #a869a8;
   border-radius: 3px;
   display: flex;
-  flex: .5;
+  flex: 0.5;
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
@@ -51,7 +52,8 @@ html, body {
   text-align: center;
 }
 
-.catContainer, .humanContainer {
+.catContainer,
+.humanContainer {
   display: flex;
   justify-content: space-around;
 }
@@ -74,11 +76,11 @@ img.cat {
   height: 5rem;
 }
 
-.participantContainer.human .human {
+.participantContainer.human .participant.human {
   z-index: 0;
 }
 
-.participantContainer.human .cat {
+.participantContainer.human .participant.cat {
   margin-top: 2rem;
   margin-left: -2rem;
   z-index: 1;
@@ -89,21 +91,12 @@ img.cat {
   background-color: white;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: none;
-  }
-  50% {
-    box-shadow: 0 0 10px #a869a8;
-  }
-  100% {
-    box-shadow: none;
-  }
+.participant.human {
+  height: 200px;
 }
 
 .active {
-  animation: pulse 3s infinite;
-  /* transition: .2s; */
+  border: 5px solid #a869a8;
 }
 
 .participant .name {
@@ -116,7 +109,7 @@ img.cat {
 }
 
 .participant .preferences {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .preference.tried {
@@ -131,7 +124,6 @@ img.cat {
   background-color: orange;
 } */
 
-
 .buttonContainer {
   display: flex;
   justify-content: center;
@@ -142,15 +134,15 @@ img.cat {
   border: 3px solid #a869a8;
   border-radius: 3px;
   color: #a869a8;
-  font-family: 'Oxygen';
+  font-family: "Oxygen";
   font-size: 1.5rem;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .button:hover {
   box-shadow: 2px 2px 4px rgba(130, 130, 130, 0.5);
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .button:active {
@@ -159,5 +151,5 @@ img.cat {
 
 .button:focus {
   outline-color: #a869a8;
-  transition: .2s;
+  transition: 0.2s;
 }

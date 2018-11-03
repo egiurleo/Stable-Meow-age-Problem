@@ -5,11 +5,11 @@ function setUpFirstday() {
 }
 
 function generateParticipants() {
-  var garfield = new Cat('Garfield');
-  var sylvester = new Cat('Sylvester');
+  var garfield = new Cat("Garfield");
+  var sylvester = new Cat("Sylvester");
 
-  var jon = new Human('Jon');
-  var granny = new Human('Granny');
+  var jon = new Human("Jon");
+  var granny = new Human("Granny");
 
   garfield.setPreferences([jon, granny]);
   sylvester.setPreferences([jon, granny]);
@@ -26,9 +26,9 @@ function initialSetup() {
 
   day = -1;
 
-  setupBlurbDay('');
-  setupBlurbText('Click to start!');
-  setupNextButton(setUpDay, 'Start');
+  setupBlurbDay("");
+  setupBlurbText("Click to start!");
+  setupNextButton(setUpDay, "Start");
 }
 
 function setUpDom(cats, humans) {
@@ -40,11 +40,11 @@ function setUpDom(cats, humans) {
   humans.forEach(human => {
     var humanDiv = setUpDiv(human, HUMAN);
     $(`.${HUMAN_CONTAINER}`).append(humanDiv);
-  })
+  });
 }
 
 function setUpDiv(participant, className) {
-  var preferenceList = '';
+  var preferenceList = "";
 
   Object.keys(participant.preferences).forEach(index => {
     preferenceList += `
