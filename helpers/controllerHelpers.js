@@ -56,3 +56,39 @@ function pair(human, cat) {
   human.pair(cat);
   moveAnimate(`.${PARTICIPANT}.${cat.name}`, `.${PARTICIPANT_CONTAINER}.${human.name}`);
 }
+
+function makeActive(name) {
+  $(`.${PARTICIPANT}.${name}`).addClass(ACTIVE);
+}
+
+function tryCat(human, catIdx) {
+  human.tryPreference(catIdx);
+  $($(`.${PARTICIPANT}.${human.name}`).find(`.${PREFERENCE}`)[catIdx]).addClass(TRIED);
+}
+
+function moveAnimate(element, newParent){
+  // method found here: https://stackoverflow.com/questions/907279/jquery-animate-moving-dom-element-to-new-parent
+  //Allow passing in either a jQuery object or selector
+  element = $(element);
+  newParent= $(newParent);
+
+  var oldOffset = element.offset();
+
+  if(!oldOffset) { return; }
+
+  element.appendTo(newParent);
+  var newOffset = element.offset();
+
+  var temp = element.clone().appendTo('body');
+  temp.css({
+      'position': 'absolute',
+      'left': oldOffset.left,
+      'top': oldOffset.top,
+      'z-index': 1000
+  });
+  element.hide();
+  temp.animate({'top': newOffset.top, 'left': newOffset.left}, 'slow', function(){
+     element.show();
+     temp.remove();
+  });
+}

@@ -14,10 +14,10 @@ html, body {
 
 .bodyContainer {
   display: flex;
-  flex-direction: column;
-  /* justify-content: space-around;
-  align-items: center; */
+  flex-direction: row;
+  align-items: flex-start;
   margin: 1rem;
+  height: 25rem;
 }
 
 .blurb {
@@ -25,11 +25,19 @@ html, body {
   border: 3px solid #a869a8;
   border-radius: 3px;
   display: flex;
-  flex: 1;
+  flex: .5;
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
-  height: 200px;
+  height: 100%;
+}
+
+.demo {
+  flex: 3;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .blurb .day {
@@ -43,13 +51,6 @@ html, body {
   text-align: center;
 }
 
-.demo {
-  align-items: center;
-  display: flex;
-  flex: 2;
-  flex-direction: column;
-}
-
 .catContainer, .humanContainer {
   display: flex;
   justify-content: space-around;
@@ -59,6 +60,18 @@ html, body {
   display: flex;
   margin: 1rem;
   padding: 1rem;
+}
+
+/* .participantContainer.cat {
+  height: .5rem;
+} */
+
+img.human {
+  height: 10rem;
+}
+
+img.cat {
+  height: 5rem;
 }
 
 .participantContainer.human .human {

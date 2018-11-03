@@ -9,5 +9,5 @@ const PARTICIPANT = 'participant';
 const PARTICIPANT_CONTAINER = 'participantContainer';
 const PREFERENCE = 'preference';
 const PREFERENCES = 'preferences';
-const TEXT = 'text'
+const TEXT = 'text';
 const TRIED = 'tried';

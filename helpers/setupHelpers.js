@@ -63,7 +63,7 @@ function setUpDiv(participant, className) {
           <div class='info'>
             <div class='name'>${participant.name}</div>
             <div class='image'>
-              <img src='images/${participant.name}.png' width=200/> 
+              <img src='images/${participant.name}.png' class='${className}'/> 
             </div>
           </div>
           <div class='${PREFERENCES}'>
