@@ -4,152 +4,69 @@ html,
 body {
   font-family: "Oxygen", sans-serif;
   font-size: 1.1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .titleContainer {
-  color: #a869a8ff;
-  display: flex;
-  font-size: 1.5rem;
-  justify-content: center;
+  color: #a869a8;
+  text-align: center;
 }
 
 .bodyContainer {
   display: flex;
+  flex: 1;
   flex-direction: row;
-  align-items: flex-start;
-  margin: 1rem;
-  height: 25rem;
 }
 
 .blurb {
-  align-items: center;
-  border: 3px solid #a869a8;
-  border-radius: 3px;
-  display: flex;
-  flex: 0.5;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1rem;
-  height: 100%;
-}
-
-.demo {
-  flex: 3;
-  height: 100%;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.blurb .day {
-  color: #a869a8;
-  display: flex;
-  font-size: 1.5rem;
-  justify-content: center;
-}
-
-.blurb .text {
+  flex: 1;
+  border: 5px solid #a869a8;
+  border-radius: 6px;
+  margin: 10px;
+  padding: 10px;
   text-align: center;
 }
 
-.catContainer,
-.humanContainer {
-  display: flex;
-  justify-content: space-around;
+.day,
+button.next {
+  font-size: 22px;
+  color: #a869a8;
+  font-weight: bold;
 }
 
-.participantContainer {
-  display: flex;
-  margin: 1rem;
-  padding: 1rem;
+.day {
+  height: 50px;
 }
 
-/* .participantContainer.cat {
-  height: .5rem;
-} */
-
-img.human {
-  height: 10rem;
+.text {
+  margin-top: 10px;
+  height: 100px;
 }
-
-img.cat {
-  height: 5rem;
-}
-
-.participantContainer.human .participant.human {
-  z-index: 0;
-}
-
-.participantContainer.human .participant.cat {
-  margin-top: 2rem;
-  margin-left: -2rem;
-  z-index: 1;
-}
-
-.participant {
-  border-radius: 3px;
-  background-color: white;
-}
-
-.participant.human {
-  height: 200px;
-}
-
-.active {
-  border: 5px solid #a869a8;
-}
-
-.participant .name {
-  display: flex;
-  justify-content: center;
-}
-
-.participant .body {
-  display: flex;
-}
-
-.participant .preferences {
-  font-size: 0.9rem;
-}
-
-.preference.tried {
-  text-decoration: line-through;
-}
-
-/* .cat .image {
-  background-color: blue;
-}
-
-.human .image {
-  background-color: orange;
-} */
 
 .buttonContainer {
-  display: flex;
-  justify-content: center;
+  margin-top: 10px;
 }
 
-.button {
-  background-color: transparent;
-  border: 3px solid #a869a8;
-  border-radius: 3px;
-  color: #a869a8;
-  font-family: "Oxygen";
-  font-size: 1.5rem;
-  padding: 0.5rem;
+button.next {
+  font-size: 20px;
+  background-color: white;
+  border: 2px solid #a869a8;
+  border-radius: 6px;
 }
 
-.button:hover {
-  box-shadow: 2px 2px 4px rgba(130, 130, 130, 0.5);
+button.next:focus {
+  outline: 0;
+}
+
+button.next:hover {
   cursor: pointer;
-  transition: 0.2s;
 }
 
-.button:active {
-  background-color: #f4ecf4;
+button.next:active {
+  background-color: #ffeaff;
 }
 
-.button:focus {
-  outline-color: #a869a8;
-  transition: 0.2s;
+.demo {
+  flex: 4;
 }
