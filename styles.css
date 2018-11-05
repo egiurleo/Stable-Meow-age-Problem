@@ -6,16 +6,21 @@ body {
   font-size: 1.1rem;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .titleContainer {
   color: #a869a8;
   text-align: center;
+  flex: 1;
 }
 
 .bodyContainer {
+  flex: 9;
   display: flex;
-  flex: 1;
+  height: 100%;
   flex-direction: row;
 }
 
@@ -69,4 +74,69 @@ button.next:active {
 
 .demo {
   flex: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  padding: 10px;
+}
+
+.humanContainer,
+.catContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.catContainer {
+  justify-content: center;
+}
+
+.participantContainer {
+  flex: 1;
+}
+
+.participantContainer.human {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
+}
+
+.participant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.participant.active .name {
+  color: #a869a8;
+  font-weight: bold;
+}
+
+img.human {
+  height: 200px;
+}
+
+img.cat {
+  height: 100px;
+}
+
+.participant.human {
+  flex: 1;
+}
+
+.participant.cat {
+  margin: 20px;
+}
+
+.humanContainer .catAdoptionContainer {
+  border: 5px dotted #a869a8;
+  border-radius: 6px;
+  flex: 3;
+  height: 100%;
+}
+
+.preference.tried {
+  text-decoration: line-through;
 }

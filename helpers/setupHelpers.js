@@ -56,23 +56,26 @@ function setUpDiv(participant, className) {
     `;
   });
 
+  const catContainer =
+    className === "human"
+      ? `<div class='${CAT_ADOPTION_CONTAINER}'>
+    </div>`
+      : "";
+
   return `
     <div class='${PARTICIPANT_CONTAINER} ${className} ${participant.name}'>
       <div class='${className} ${PARTICIPANT} ${participant.name}'>
-        <div class='body'>
-          <div class='info'>
-            <div class='name'>${participant.name}</div>
-            <div class='image'>
-              <img src='images/${participant.name}.png' class='${className}'/> 
-            </div>
-          </div>
-          <div class='${PREFERENCES}'>
-            <ol>
-              ${preferenceList}
-            </ol>
-          </div>
+        <div class='name'>${participant.name}</div>
+        <div class='image'>
+          <img src='images/${participant.name}.png' class='${className}'/> 
+        </div>
+        <div class='${PREFERENCES}'>
+          <ol>
+            ${preferenceList}
+          </ol>
         </div>
       </div>
+      ${catContainer}
     </div>
   `;
 }
